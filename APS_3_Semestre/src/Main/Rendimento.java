@@ -1,4 +1,5 @@
 package Main;
+import java.util.ArrayList;
 /* Classe Rendimento responsável por armazenar a notas de determinado aluno
 e em determinado curso*/
 public class Rendimento {
@@ -11,10 +12,27 @@ public class Rendimento {
     private Nota reposicao;
     private Nota exame;
     private Nota media;
+    //ArrayList que armazena os Rendimentos:
+    private static ArrayList<Rendimento> rendimentos = new ArrayList<Rendimento>();
     
     //Constructor
     public Rendimento(Aluno aAluno, Curso aCurso, Nota aNP1, Nota aNP2,
             Nota aReposicao, Nota aExame){
+        this.aluno = aAluno;
+        this.curso = aCurso;
+        this.np1 = aNP1;
+        this.np2 = aNP2;
+        this.reposicao = aReposicao;
+        this.exame = aExame;
+        rendimentos.add(new Rendimento(this.aluno,this.curso,this.np1,this.np2,this.reposicao,
+        this.exame,true));
+    }
+    
+    /*Constructor com flag utilizado para não entrar em loop infinito
+      na hora de adicionar o aluno no ArrayList
+    */
+        public Rendimento(Aluno aAluno, Curso aCurso, Nota aNP1, Nota aNP2,
+            Nota aReposicao, Nota aExame, boolean flag){
         this.aluno = aAluno;
         this.curso = aCurso;
         this.np1 = aNP1;
@@ -71,6 +89,10 @@ public class Rendimento {
 
     public void setExame(Nota aExame) {
         this.exame = aExame;
+    }
+    
+    public static ArrayList<Rendimento> getRendimentos(){
+        return rendimentos;
     }
     
     //Métodos
