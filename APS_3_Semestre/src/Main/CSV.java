@@ -88,8 +88,16 @@ public class CSV {
             for(String[] valores: dados){
                 Aluno alunoCSV = null;
                 for(Aluno aluno: Aluno.getAlunos()){
-                    if(aluno.getId()==valores[0]){
+                    
+                    /*Verifica se não há diferenca entre os strings, se não houver
+                    diferenca o algoritmo irá armazenar qual é o aluno*/
+                    String idAluno = ""+aluno.getId();
+                    String valorId = ""+valores[0];
+                    
+                    String diferenca = valorId.replace(idAluno,"");
+                    if(diferenca==""){
                         alunoCSV = aluno;
+                    } else {
                     }
                 }
                 Nota np1 = new Nota(Double.parseDouble(valores[1]));

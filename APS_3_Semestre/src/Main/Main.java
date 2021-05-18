@@ -173,7 +173,8 @@ public class Main {
             for(Rendimento rendimento: Rendimento.getRendimentos()){
                 i += 1;
                 if(rendimento.getCurso()==cursoEscolhido){
-                    System.out.println("\nAluno: "+rendimento.getAluno().getNome());
+                    System.out.println("\nID: "+rendimento.getAluno().getId());
+                    System.out.println("Aluno: "+rendimento.getAluno().getNome());
                     System.out.println("Nota NP1: "+rendimento.getNp1().getValor());
                     System.out.println("Nota NP2: "+rendimento.getNp2().getValor());
                     System.out.println("Nota Reposição: "+rendimento.getReposicao().getValor());
