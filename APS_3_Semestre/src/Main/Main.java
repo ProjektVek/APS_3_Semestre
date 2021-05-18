@@ -5,6 +5,8 @@ lógica da interface com o usuário*/
 public class Main {
     
     public static void main(String args[]){
+        CSV.loadAll();
+        
         int escolha;
         do{
             exibeMenu();
