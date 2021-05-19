@@ -7,6 +7,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.nio.charset.StandardCharsets;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
 
 public class CSV {
     
@@ -112,5 +116,91 @@ public class CSV {
         System.out.println("Rendimentos Carregados com Sucesso!!!\n");
         
     }
-        
+    
+    //Método responsável por salvar uma String em um arquivo CSV
+    public static void saveStringCSV(String localizacao, String texto){
+        try(    OutputStream os = new FileOutputStream(localizacao);
+                OutputStreamWriter osw = new OutputStreamWriter(os, StandardCharsets.UTF_8);
+                PrintWriter pw = new PrintWriter(osw, true);
+                ){
+            
+            pw.print(texto);
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
+    
+    //Método que salva os alunos no arquivo alunos.csv
+    public static void saveAlunos(){
+        String texto = "";
+        System.out.println("Salvando Alunos...");
+        
+        int i = 0;
+        for(Aluno aluno: Aluno.getAlunos()){
+            if(i!=0){
+                texto += "\n";
+            }
+            texto += aluno.getId()+";"+aluno.getNome();
+            i++;
+        }
+        
+        String localizacao = "../arquivosCSV/alunos.csv";
+        saveStringCSV(localizacao,texto);
+        System.out.println("Alunos Salvos Com Sucesso!!!");
+    }
+    
+    //Método que salva os cursos no arquivo cursos.csv
+    public static void saveCursos(){
+        String texto = "";
+        System.out.println("Salvando Cursos...");
+        
+        int i = 0;
+        for(Curso curso: Curso.getCursos()){
+            if(i!=0){
+                texto += "\n";
+            }
+            texto += curso.getNome()+";"+curso.getNivel()+";"+curso.getAno();
+            i++;
+        }
+        
+        String localizacao = "../arquivosCSV/cursos.csv";
+        saveStringCSV(localizacao,texto);
+        System.out.println("Cursos Salvos Com Sucesso!!!");
+    }
+    
+    //Método que salva os rendimentos em seus respectivos arquivos
+    public static void saveRendimentos(){
+        System.out.println("Salvando Rendimentos");
+        for(Curso curso : Curso.getCursos()){
+           String texto = "";
+           int i = 0;
+           for(Rendimento rendimento : Rendimento.getRendimentos()){
+               if(curso==rendimento.getCurso()){
+                   if(i!=0){
+                       texto += "\n";
+                   }
+                   texto += rendimento.getAluno().getId()+";";
+                   texto += rendimento.getNp1().getValor()+";";
+                   texto += rendimento.getNp2().getValor()+";";
+                   texto += rendimento.getReposicao().getValor()+";";
+                   texto += rendimento.getExame().getValor();
+                   i++;
+               }
+           }
+           
+          String localizacao = "../arquivosCSV/"+curso.getNome()+"_"+curso.getNivel()+"_"+curso.getAno()+".csv";
+          saveStringCSV(localizacao,texto);
+        }
+        
+        System.out.println("Rendimentos Salvos Com Sucesso!!!");
+    }
+    
+    //Método que executa todas as operações de salvamento
+    public static void saveAll(){
+        saveAlunos();
+        saveCursos();
+        saveRendimentos();
+    }
+        
+}

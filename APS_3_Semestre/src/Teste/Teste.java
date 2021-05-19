@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.nio.charset.StandardCharsets;
 
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
 public class Teste {
     public static void main(String args[]){
         //lerArquivo("../arquivosCSV/alunos.csv");
@@ -16,6 +20,9 @@ public class Teste {
             System.out.println(values[0]);
             System.out.println(values[1]);
         }
+        
+        saveArquivo("../testeCSV/save.csv");
+        
     }
     
     public static void lerArquivo(String filePath){
@@ -76,5 +83,22 @@ public class Teste {
         }    
         
         return matriz;
+    }
+    
+    public static void saveArquivo(String filePath){
+        try(    OutputStream os = new FileOutputStream(filePath/*, true*/);
+                OutputStreamWriter osw = new OutputStreamWriter(os, StandardCharsets.UTF_8);
+                PrintWriter pw = new PrintWriter(osw, true);
+                ){
+            
+            for(int i = 0;i<5;i++){
+                pw.print("\n"+i+";"+(i*2)+";"+(i*3));
+            }
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        System.out.println("Arquivos salvos com sucesso!");
     }
 }

@@ -42,6 +42,9 @@ public class Main {
     //Função que executa os comandos de acordo com a escolha desejada
     public static void executaEscolha(int aEscolha){
         switch(aEscolha){
+            case 0:
+                CSV.saveAll();
+                break;
             case 1:
                 listaCursos();
                 break;
