@@ -32,10 +32,25 @@ public class Main {
     //Função que lê a escolha do usuário
     public static int lerEscolha(){
         Scanner scanner = new Scanner(System.in);
+        boolean digitarNovamente = true;
+        int escolha = -1;
         
-        System.out.print("Digite o número da opção desejada: ");
-        int escolha = scanner.nextInt();
-        System.out.println();
+        do{
+            try{
+                System.out.print("Digite o número da opção desejada: ");
+                String entrada = scanner.next();
+                
+                escolha = Integer.parseInt(entrada);
+                if(escolha<0||escolha>7){
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            } catch(Exception e){
+               System.out.println("Entrada Inválida, Digite Novamente\n"); 
+            }
+        }while(digitarNovamente);
+        
         return escolha;
     }
     
@@ -96,14 +111,31 @@ public class Main {
             System.out.println("ID: "+aluno.getId());
             System.out.println("Nome: "+aluno.getNome());
         }
+        int numeroAlunos = i;
         if(i==0){
             flagErro = true;
             System.out.println("\nNão existe Aluno Cadastrado, Operação Cancelada");
             System.out.println("Por favor, Cadastre um Aluno antes de realizar essa operação\n");
         }
         if(!flagErro){
-            System.out.print("\nDigite o N° da Opção desejada: ");
-            int numAluno = scanner.nextInt();
+            int numAluno = 0;
+            boolean digitarNovamente = true;
+            
+            do{
+              try{
+                    System.out.print("\nDigite o N° da Opção desejada: ");
+                    String entrada = scanner.next();
+                
+                    numAluno = Integer.parseInt(entrada);
+                    if(numAluno<=0||numAluno>numeroAlunos){
+                        Exception e = new Exception();
+                        throw e;
+                    }
+                    digitarNovamente = false;
+                }catch(Exception e){
+                    System.out.println("Entrada Inválida, Digite Novamente");
+                }  
+            }while(digitarNovamente);
             
             i = 0;
             for(Aluno aluno: Aluno.getAlunos()){
@@ -155,14 +187,32 @@ public class Main {
             System.out.println("Nível: "+curso.getNivel());
             System.out.println("Ano: "+curso.getAno());
         }
+        int numeroCursos = i;
         if(i==0){
             flagErro = true;
             System.out.println("\nNão existe Curso Cadastrado, Operação Cancelada");
             System.out.println("Por favor, Cadastre um Curso antes de realizar essa operação\n");
         }
         if(!flagErro){
-            System.out.print("\nDigite o N° da Opção desejada: ");
-            int numCurso = scanner.nextInt();
+            boolean digitarNovamente = true;
+            int numCurso = 0;
+            
+            do{
+                try{
+                    System.out.print("\nDigite o N° da Opção desejada: ");
+                    String entrada = scanner.next();
+                    numCurso = Integer.parseInt(entrada);
+                    
+                    if(numCurso<=0||numCurso>numeroCursos){
+                        Exception e = new Exception();
+                        throw e;
+                    }
+                    digitarNovamente = false;
+                }catch(Exception e){
+                    System.out.println("Entrada Inválida, Digite Novamente");
+                }
+            }while(digitarNovamente);
+            
             
             i = 0;
             for(Curso curso: Curso.getCursos()){
@@ -218,10 +268,44 @@ public class Main {
         System.out.println("Escolha o nível do curso: ");
         System.out.println("1 - GRADUACAO");
         System.out.println("2 - POS_GRADUACAO");
-        System.out.print("Digite o número da opção desejada: ");
-        int numNivel = scanner.nextInt();
-        System.out.print("Digite o Ano do curso: ");
-        int ano = scanner.nextInt();
+        
+        int numNivel = 0;
+        boolean digitarNovamente = true;
+        do{
+            try{
+                System.out.print("\nDigite o N° da Opção desejada: ");
+                String entrada = scanner.next();
+                numNivel = Integer.parseInt(entrada);
+
+                if(numNivel<=0||numNivel>2){
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida, Digite Novamente");
+            }
+        }while(digitarNovamente);
+        
+        
+        int ano = 0;
+        digitarNovamente = true;
+        do{
+            try{
+                System.out.print("\nDigite o Ano do curso: ");
+                String entrada = scanner.next();
+                ano = Integer.parseInt(entrada);
+
+                if(ano<1900||ano>2100){
+                    System.out.println("Anos abaixo de 1900 ou acima de 2100 são inválidos");
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida, Digite Novamente");
+            }
+        }while(digitarNovamente);
         
         String nivel;
         switch(numNivel){
@@ -257,6 +341,7 @@ public class Main {
             System.out.println("ID: "+aluno.getId());
             System.out.println("Nome: "+aluno.getNome()+"\n");
         }
+        int numeroAlunos = i;
         if(i==0){
             flagErro = true;
             System.out.println("Nenhum Aluno Cadastrado, Operação Cancelada");
@@ -264,8 +349,24 @@ public class Main {
         }
         
         if(!flagErro){
-            System.out.print("Digite o N° de Opção do Aluno desejado: ");
-            int numEscolha = scanner.nextInt();
+            int numEscolha = 0;
+            boolean digitarNovamente = true;
+            do{
+              try{
+                    System.out.print("\nDigite o N° de Opção do Aluno desejado: ");
+                    String entrada = scanner.next();
+                
+                    numEscolha = Integer.parseInt(entrada);
+                    if(numEscolha<=0||numEscolha>numeroAlunos){
+                        Exception e = new Exception();
+                        throw e;
+                    }
+                    digitarNovamente = false;
+                }catch(Exception e){
+                    System.out.println("Entrada Inválida, Digite Novamente");
+                }  
+            }while(digitarNovamente);
+            
             i = 0;
             for(Aluno aluno : Aluno.getAlunos()){
                 i += 1;
@@ -275,6 +376,7 @@ public class Main {
             }
         }
         
+        int numeroCursos = 0;
         if(!flagErro){
             System.out.println("\nEscolha um Curso:\n");
             i = 0;
@@ -285,6 +387,7 @@ public class Main {
                 System.out.println("Nível: "+curso.getNivel());
                 System.out.println("Ano: "+curso.getAno()+"\n");
             }
+            numeroCursos = i;
             if(i==0){
                 flagErro = true;
                 System.out.println("Nenhum Curso Cadastrado, Operação Cancelada");
@@ -292,8 +395,24 @@ public class Main {
             }
         }
         if(!flagErro){
-            System.out.print("Digite o N° de Opção do Curso desejado: ");
-            int numEscolha = scanner.nextInt();
+            int numEscolha = 0;
+            boolean digitarNovamente = true;
+            do{
+                try{
+                    System.out.print("Digite o N° de Opção do Curso desejado: ");
+                    String entrada = scanner.next();
+                    numEscolha = Integer.parseInt(entrada);
+                    
+                    if(numEscolha<=0||numEscolha>numeroCursos){
+                        Exception e = new Exception();
+                        throw e;
+                    }
+                    digitarNovamente = false;
+                }catch(Exception e){
+                    System.out.println("Entrada Inválida, Digite Novamente");
+                }
+            }while(digitarNovamente);
+            
             i = 0;
             for(Curso curso : Curso.getCursos()){
                 i += 1;
@@ -303,14 +422,10 @@ public class Main {
             }
         }
         if(!flagErro){
-            System.out.print("Digite a Nota NP1: ");
-            double notaNP1 = scanner.nextDouble();
-            System.out.print("Digite a Nota NP2: ");
-            double notaNP2 = scanner.nextDouble();
-            System.out.print("Digite a Nota da Reposicao: ");
-            double notaReposicao = scanner.nextDouble();
-            System.out.print("Digite a Nota do Exame: ");
-            double notaExame = scanner.nextDouble();
+            double notaNP1 = lerNota("Digite a Nota NP1: ");
+            double notaNP2 = lerNota("Digite a Nota NP2: ");
+            double notaReposicao = lerNota("Digite a Nota da Reposicao: ");
+            double notaExame = lerNota("Digite a Nota do Exame: ");
             
             np1 = new Nota(notaNP1);
             np2 = new Nota(notaNP2);
@@ -322,5 +437,30 @@ public class Main {
             System.out.println("\nRendimento Cadastrado com Sucesso!!!\n");
         }
         
+    }
+    
+    public static double lerNota(String mensagem){
+        Scanner scanner = new Scanner(System.in);
+        double nota = -1;
+        
+        boolean digitarNovamente = true;
+        do{
+            try{
+                System.out.print(mensagem);
+                String entrada = scanner.next();
+                
+                nota = Double.parseDouble(entrada);
+                if(nota<0||nota>10){
+                    System.out.println("Nota não pode ser Negativa ou Maior que 10");
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida, Digite Novamente");
+            }
+        }while(digitarNovamente);
+        
+        return nota;
     }
 }

@@ -134,7 +134,7 @@ public class CSV {
     //Método que salva os alunos no arquivo alunos.csv
     public static void saveAlunos(){
         String texto = "";
-        System.out.println("Salvando Alunos...");
+        System.out.println("\nSalvando Alunos...");
         
         int i = 0;
         for(Aluno aluno: Aluno.getAlunos()){
@@ -153,7 +153,7 @@ public class CSV {
     //Método que salva os cursos no arquivo cursos.csv
     public static void saveCursos(){
         String texto = "";
-        System.out.println("Salvando Cursos...");
+        System.out.println("\nSalvando Cursos...");
         
         int i = 0;
         for(Curso curso: Curso.getCursos()){
@@ -171,7 +171,7 @@ public class CSV {
     
     //Método que salva os rendimentos em seus respectivos arquivos
     public static void saveRendimentos(){
-        System.out.println("Salvando Rendimentos");
+        System.out.println("\nSalvando Rendimentos");
         for(Curso curso : Curso.getCursos()){
            String texto = "";
            int i = 0;

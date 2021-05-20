@@ -12,17 +12,21 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
+
+import java.util.Scanner;
 public class Teste {
     public static void main(String args[]){
+        testaTry();
+
         //lerArquivo("../arquivosCSV/alunos.csv");
-        
+        /*
         for(String[] values: stringLer("../arquivosCSV/alunos.csv")){
             System.out.println(values[0]);
             System.out.println(values[1]);
         }
         
         saveArquivo("../testeCSV/save.csv");
-        
+        */
     }
     
     public static void lerArquivo(String filePath){
@@ -100,5 +104,27 @@ public class Teste {
         }
         
         System.out.println("Arquivos salvos com sucesso!");
+    }
+    
+    public static void testaTry(){
+        boolean erro = true;
+        do{
+            try{
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Digite um número: ");
+                int num = scanner.nextInt();
+                
+                if(num>=0){
+                System.out.println("Número: "+num);
+                erro = false; 
+                } else {
+                    IOException e = new IOException();
+                    throw e;
+                }
+                
+            } catch(Exception e){
+                System.out.println("Entrada Inválida, Digite Novamente");
+            }
+        }while(erro);
     }
 }
