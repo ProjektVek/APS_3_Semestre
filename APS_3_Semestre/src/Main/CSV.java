@@ -171,7 +171,7 @@ public class CSV {
     
     //Método que salva os rendimentos em seus respectivos arquivos
     public static void saveRendimentos(){
-        System.out.println("\nSalvando Rendimentos");
+        System.out.println("\nSalvando Rendimentos...");
         for(Curso curso : Curso.getCursos()){
            String texto = "";
            int i = 0;
