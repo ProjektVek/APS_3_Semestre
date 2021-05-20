@@ -3,10 +3,12 @@ import java.util.Scanner;
 /*Victor: Classe Main será responsável por rodar o programa, executando a 
 lógica da interface com o usuário*/
 public class Main {
-    
+    private static String status;
     public static void main(String args[]){
+        status = "carregando";
         CSV.loadAll();
         
+        status = "executando";
         int escolha;
         do{
             exibeMenu();
@@ -14,6 +16,10 @@ public class Main {
             executaEscolha(escolha);
         }while(escolha!=0);
         
+    }
+    
+    public static String getStatus(){
+        return status;
     }
     
     //Função que exibe o menu
@@ -256,7 +262,6 @@ public class Main {
         String nome = scanner.next();
         
         Aluno aluno = new Aluno(id,nome);
-        System.out.println("Aluno Cadastrado com Sucesso!!!\n");
     }
     
     //Função que inclui novo curso
@@ -321,7 +326,6 @@ public class Main {
         }
         
         Curso curso = new Curso(nome,nivel,ano);
-        System.out.println("\nCurso Adicionado com Sucesso!!!\n");
     }
     
     //Função que inclui novo Rendimento

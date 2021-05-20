@@ -13,10 +13,23 @@ public class Curso {
     
     //Constructor
     public Curso(String aNome, String aNivel, int aAno){
-        this.nome = aNome;
-        this.nivel = aNivel;
-        this.ano = aAno;
-        cursos.add(new Curso(this.nome,this.nivel,this.ano,true));
+        boolean cursoRepetido = false;
+        for(Curso curso: cursos){
+            String diferencaNome = curso.getNome().replace(aNome,"");
+            String diferencaNivel = curso.getNivel().replace(aNivel,"");
+            if((diferencaNome=="")&&(diferencaNivel=="")&&(curso.getAno()==aAno)){
+                cursoRepetido = true;
+            }
+        }
+        if(cursoRepetido){
+            System.out.println("\nCurso já existe, portanto não será criado\n");
+        } else {
+            this.nome = aNome;
+            this.nivel = aNivel;
+            this.ano = aAno;
+            cursos.add(new Curso(this.nome,this.nivel,this.ano,true));
+        }
+        
     }
     /*Constructor com flag utilizado para não entrar em loop infinito
       na hora de adicionar o curso no ArrayList
@@ -25,6 +38,9 @@ public class Curso {
         this.nome = aNome;
         this.nivel = aNivel;
         this.ano = aAno;
+        if(Main.getStatus()=="executando"){
+            System.out.println("\nCurso Adicionado com Sucesso!!!\n");
+        }
     }
 
     //Getters e Setters
