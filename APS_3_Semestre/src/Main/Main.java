@@ -255,11 +255,37 @@ public class Main {
     //Função que inclui novo aluno
     public static void incluiAluno(){
         Scanner scanner = new Scanner(System.in);
+        boolean digitarNovamente = true;
+        String id = "";
+        String nome = "";
+        do{
+            try{
+                System.out.print("Digite o id do aluno: ");
+                id = scanner.nextLine();
+                if(id==""){
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida Digite Novamente\n");
+            }
+        }while(digitarNovamente);
         
-        System.out.print("Digite o id do aluno: ");
-        String id = scanner.nextLine();
-        System.out.print("Digite o nome do aluno: ");
-        String nome = scanner.nextLine();
+        digitarNovamente = true;
+        do{
+            try{
+                System.out.print("Digite o nome do aluno: ");
+                nome = scanner.nextLine();
+                if(nome==""){
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida Digite Novamente\n");
+            }
+        }while(digitarNovamente);
         
         Aluno aluno = new Aluno(id,nome);
     }
@@ -267,15 +293,29 @@ public class Main {
     //Função que inclui novo curso
     public static void incluiCurso(){
         Scanner scanner = new Scanner(System.in);
+        boolean digitarNovamente = true;
+        String nome = "";
         
-        System.out.print("Digite o nome do curso: ");
-        String nome = scanner.nextLine();
+        do{
+            try{
+                System.out.print("Digite o nome do curso: ");
+                nome = scanner.nextLine();
+                if(nome==""){
+                    Exception e = new Exception();
+                    throw e;
+                }
+                digitarNovamente = false;
+            }catch(Exception e){
+                System.out.println("Entrada Inválida Digite Novamente\n");
+            }
+        }while(digitarNovamente);
+        
         System.out.println("Escolha o nível do curso: ");
         System.out.println("1 - GRADUACAO");
         System.out.println("2 - POS_GRADUACAO");
         
         int numNivel = 0;
-        boolean digitarNovamente = true;
+        digitarNovamente = true;
         do{
             try{
                 System.out.print("\nDigite o N° da Opção desejada: ");
