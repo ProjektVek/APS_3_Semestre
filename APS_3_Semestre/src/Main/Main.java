@@ -254,7 +254,7 @@ public class Main {
     
     //Função que inclui novo aluno
     public static void incluiAluno(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in,"ISO-8859-1");
         boolean digitarNovamente = true;
         String id = "";
         String nome = "";
@@ -292,7 +292,7 @@ public class Main {
     
     //Função que inclui novo curso
     public static void incluiCurso(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in,"ISO-8859-1");
         boolean digitarNovamente = true;
         String nome = "";
         
