@@ -44,7 +44,7 @@ public class Main {
         do{
             try{
                 System.out.print("Digite o número da opção desejada: ");
-                String entrada = scanner.next();
+                String entrada = scanner.nextLine();
                 
                 escolha = Integer.parseInt(entrada);
                 if(escolha<0||escolha>7){
@@ -130,7 +130,7 @@ public class Main {
             do{
               try{
                     System.out.print("\nDigite o N° da Opção desejada: ");
-                    String entrada = scanner.next();
+                    String entrada = scanner.nextLine();
                 
                     numAluno = Integer.parseInt(entrada);
                     if(numAluno<=0||numAluno>numeroAlunos){
@@ -206,7 +206,7 @@ public class Main {
             do{
                 try{
                     System.out.print("\nDigite o N° da Opção desejada: ");
-                    String entrada = scanner.next();
+                    String entrada = scanner.nextLine();
                     numCurso = Integer.parseInt(entrada);
                     
                     if(numCurso<=0||numCurso>numeroCursos){
@@ -257,9 +257,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Digite o id do aluno: ");
-        String id = scanner.next();
+        String id = scanner.nextLine();
         System.out.print("Digite o nome do aluno: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
         
         Aluno aluno = new Aluno(id,nome);
     }
@@ -269,7 +269,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Digite o nome do curso: ");
-        String nome = scanner.next();
+        String nome = scanner.nextLine();
         System.out.println("Escolha o nível do curso: ");
         System.out.println("1 - GRADUACAO");
         System.out.println("2 - POS_GRADUACAO");
@@ -279,7 +279,7 @@ public class Main {
         do{
             try{
                 System.out.print("\nDigite o N° da Opção desejada: ");
-                String entrada = scanner.next();
+                String entrada = scanner.nextLine();
                 numNivel = Integer.parseInt(entrada);
 
                 if(numNivel<=0||numNivel>2){
@@ -298,7 +298,7 @@ public class Main {
         do{
             try{
                 System.out.print("\nDigite o Ano do curso: ");
-                String entrada = scanner.next();
+                String entrada = scanner.nextLine();
                 ano = Integer.parseInt(entrada);
 
                 if(ano<1900||ano>2100){
@@ -358,7 +358,7 @@ public class Main {
             do{
               try{
                     System.out.print("\nDigite o N° de Opção do Aluno desejado: ");
-                    String entrada = scanner.next();
+                    String entrada = scanner.nextLine();
                 
                     numEscolha = Integer.parseInt(entrada);
                     if(numEscolha<=0||numEscolha>numeroAlunos){
@@ -404,7 +404,7 @@ public class Main {
             do{
                 try{
                     System.out.print("Digite o N° de Opção do Curso desejado: ");
-                    String entrada = scanner.next();
+                    String entrada = scanner.nextLine();
                     numEscolha = Integer.parseInt(entrada);
                     
                     if(numEscolha<=0||numEscolha>numeroCursos){
@@ -451,7 +451,7 @@ public class Main {
         do{
             try{
                 System.out.print(mensagem);
-                String entrada = scanner.next();
+                String entrada = scanner.nextLine();
                 
                 nota = Double.parseDouble(entrada);
                 if(nota<0||nota>10){
